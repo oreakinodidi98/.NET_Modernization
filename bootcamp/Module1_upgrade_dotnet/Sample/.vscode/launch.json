@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch eShopLite (IIS Express)",
+            "type": "msedge",
+            "request": "launch",
+            "url": "http://localhost:44326",
+            "preLaunchTask": "iisexpress",
+            "webRoot": "C:\\Users\\oreakinodidi\\.NET_Modernization_Workshop\\bootcamp\\Module1_upgrade_dotnet\\Sample\\src\\eShopLite.StoreFx"
+        },
+        {
+            "name": "Launch eShopLite HTTPS (IIS Express)",
+            "type": "msedge",
+            "request": "launch",
+            "url": "https://localhost:44327",
+            "preLaunchTask": "iisexpress",
+            "webRoot": "C:\\Users\\oreakinodidi\\.NET_Modernization_Workshop\\bootcamp\\Module1_upgrade_dotnet\\Sample\\src\\eShopLite.StoreFx"
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+{
+    "dotnet.preferCSharpExtension": true,
+    "iis.configDir": "${workspaceFolder}\\bootcamp\\Module1_upgrade_dotnet\\Sample\\.vs\\eShopLiteFx\\config"
+}

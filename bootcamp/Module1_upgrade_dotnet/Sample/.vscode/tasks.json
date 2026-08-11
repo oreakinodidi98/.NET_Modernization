@@ -1,0 +1,81 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "nuget-restore",
+            "type": "shell",
+            "command": "C:\\nuget.exe",
+            "args": [
+                "restore",
+                "C:\\Users\\oreakinodidi\\.NET_Modernization_Workshop\\bootcamp\\Module1_upgrade_dotnet\\Sample\\eShopLiteFx.sln"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\MSBuild\\Current\\Bin\\MSBuild.exe",
+            "args": [
+                "C:\\Users\\oreakinodidi\\.NET_Modernization_Workshop\\bootcamp\\Module1_upgrade_dotnet\\Sample\\eShopLiteFx.sln",
+                "/p:Configuration=Debug",
+                "/v:minimal"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "nuget-restore",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "start-localdb",
+            "type": "shell",
+            "command": "sqllocaldb",
+            "args": ["start", "MSSQLLocalDB"],
+            "dependsOn": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "iisexpress",
+            "type": "shell",
+            "command": "C:\\Program Files\\IIS Express\\iisexpress.exe",
+            "args": [
+                "/path:C:\\Users\\oreakinodidi\\.NET_Modernization_Workshop\\bootcamp\\Module1_upgrade_dotnet\\Sample\\src\\eShopLite.StoreFx",
+                "/port:44326",
+                "/clr:v4.0"
+            ],
+            "dependsOn": "start-localdb",
+            "isBackground": true,
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": {
+                "pattern": {
+                    "regexp": "^(.*)$",
+                    "file": 1,
+                    "line": 1,
+                    "message": 1
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "Starting IIS Express",
+                    "endsPattern": "IIS Express is running"
+                }
+            }
+        }
+    ]
+}
